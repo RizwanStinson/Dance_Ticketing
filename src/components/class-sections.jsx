@@ -1,24 +1,106 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import moment from "moment";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const classData = {
+export const classData = {
   nyc: [
-    { id: 1, date: "January 15, 2024", time: "19:00 - 20:30", basePrice: 3000 },
-    { id: 2, date: "January 22, 2024", time: "19:00 - 20:30", basePrice: 3000 },
-    { id: 3, date: "January 29, 2024", time: "19:00 - 20:30", basePrice: 3000 },
+    {
+      id: 1,
+      date: "January 15, 2024",
+      time: "19:00 - 20:30",
+      basePrice: 3000,
+      eventName: "NYC Yoga Basics",
+      eventDescription:
+        "An introductory yoga class designed for beginners, focusing on foundational poses and breathing techniques.",
+      venue: "Yoga Studio NYC, 123 Main Street, New York, NY",
+    },
+    {
+      id: 2,
+      date: "January 22, 2024",
+      time: "19:00 - 20:30",
+      basePrice: 3000,
+      eventName: "NYC Yoga Flow",
+      eventDescription:
+        "A dynamic class combining movement and mindfulness, perfect for intermediate-level yoga enthusiasts.",
+      venue: "Yoga Studio NYC, 123 Main Street, New York, NY",
+    },
+    {
+      id: 3,
+      date: "January 29, 2024",
+      time: "19:00 - 20:30",
+      basePrice: 3000,
+      eventName: "NYC Power Yoga",
+      eventDescription:
+        "An energizing class that builds strength and flexibility through challenging poses and sequences.",
+      venue: "Yoga Studio NYC, 123 Main Street, New York, NY",
+    },
   ],
   private: [
-    { id: 4, date: "January 16, 2024", time: "By appointment", basePrice: 5000 },
-    { id: 5, date: "January 23, 2024", time: "By appointment", basePrice: 5000 },
-    { id: 6, date: "January 30, 2024", time: "By appointment", basePrice: 5000 },
+    {
+      id: 4,
+      date: "January 16, 2024",
+      time: "By appointment",
+      basePrice: 5000,
+      eventName: "Private Yoga Session",
+      eventDescription:
+        "A personalized yoga session tailored to your individual needs and goals, available by appointment.",
+      venue: "Client's Preferred Location",
+    },
+    {
+      id: 5,
+      date: "January 23, 2024",
+      time: "By appointment",
+      basePrice: 5000,
+      eventName: "Private Yoga Session",
+      eventDescription:
+        "A personalized yoga session tailored to your individual needs and goals, available by appointment.",
+      venue: "Client's Preferred Location",
+    },
+    {
+      id: 6,
+      date: "January 30, 2024",
+      time: "By appointment",
+      basePrice: 5000,
+      eventName: "Private Yoga Session",
+      eventDescription:
+        "A personalized yoga session tailored to your individual needs and goals, available by appointment.",
+      venue: "Client's Preferred Location",
+    },
   ],
   online: [
-    { id: 7, date: "January 17, 2024", time: "20:00 - 21:30", basePrice: 2000 },
-    { id: 8, date: "January 24, 2024", time: "20:00 - 21:30", basePrice: 2000 },
-    { id: 9, date: "January 31, 2024", time: "20:00 - 21:30", basePrice: 2000 },
+    {
+      id: 7,
+      date: "January 17, 2024",
+      time: "20:00 - 21:30",
+      basePrice: 2000,
+      eventName: "Online Yoga for Beginners",
+      eventDescription:
+        "A virtual class introducing yoga basics, perfect for those new to yoga or looking to refresh their practice.",
+      venue: "Zoom (Link provided upon registration)",
+    },
+    {
+      id: 8,
+      date: "January 24, 2024",
+      time: "20:00 - 21:30",
+      basePrice: 2000,
+      eventName: "Online Intermediate Yoga",
+      eventDescription:
+        "An engaging online session that focuses on building strength and flexibility through intermediate yoga poses.",
+      venue: "Zoom (Link provided upon registration)",
+    },
+    {
+      id: 9,
+      date: "January 31, 2024",
+      time: "20:00 - 21:30",
+      basePrice: 2000,
+      eventName: "Online Yoga Flow",
+      eventDescription:
+        "A virtual class offering a seamless flow of yoga sequences, ideal for relaxation and mindfulness.",
+      venue: "Zoom (Link provided upon registration)",
+    },
   ],
 };
 
@@ -45,11 +127,11 @@ export function ClassSections() {
     }).format(price);
 
   return (
-    <section className="py-20">
+    <section className="py-20" id="class">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center gap-12">
+        <div className="flex flex-row md:flex-col items-start md:items-center gap-12">
           {/* Navigation Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full   max-w-[800px]">
             {[
               { id: "nyc", label: "NYC/NJ Group" },
               { id: "private", label: "Private" },
@@ -57,7 +139,7 @@ export function ClassSections() {
             ].map((section) => (
               <button
                 key={section.id}
-                className={`text-lg py-6 border-b-2 ${
+                className={` text-[15px] md:text-lg py-6 border-r-2 md:border-r-0  md:border-b-2 ${
                   activeSection === section.id
                     ? "text-pink-400 border-pink-400"
                     : "text-white/60 border-transparent hover:text-white"
@@ -78,55 +160,23 @@ export function ClassSections() {
               exit={{ opacity: 0, y: -20 }}
               className="w-full max-w-3xl"
             >
-              <div className="grid gap-4">
+              <div className="gap-4 flex flex-wrap md:justify-center">
                 {classData[activeSection].map((classItem, index) => (
-                  <motion.div
+                  <Link
                     key={classItem.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-colors"
+                    to={`/class/${activeSection}-${classItem.id}`}
                   >
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                     {/* edit here  */}
-                      {/* Class Details */}
-                      <div className="text-center md:text-left">
-                        <h3 className="text-white text-lg font-medium">
-                          {classItem.date}
-                        </h3>
-                        <p className="text-white/60">{classItem.time}</p>
-                      </div>
-                      {/* Ticket Quantity Control */}
-                      <div className="flex items-center gap-2 bg-pink-400/20 rounded-lg p-2">
-                        <button
-                          className="h-8 w-8 flex items-center justify-center rounded-full text-pink-400 hover:text-pink-300 hover:bg-pink-400/30"
-                          onClick={() => updateTicketQuantity(classItem.id, -1)}
-                        >
-                          <Minus className="h-4 w-4" />
-                        </button>
-                        <span className="text-white font-medium min-w-[2rem] text-center">
-                          {getTicketQuantity(classItem.id)}
-                        </span>
-                        <button
-                          className="h-8 w-8 flex items-center justify-center rounded-full text-pink-400 hover:text-pink-300 hover:bg-pink-400/30"
-                          onClick={() => updateTicketQuantity(classItem.id, 1)}
-                        >
-                          <Plus className="h-4 w-4" />
-                        </button>
-                      </div>
-                      {/* Price and Booking Button */}
-                      <div className="flex flex-col items-end">
-                        <p className="text-pink-400 text-lg font-bold pr-5">
-                          {formatPrice(
-                            classItem.basePrice * getTicketQuantity(classItem.id)
-                          )}
-                        </p>
-                        <button className="px-4 py-2 mt-2 bg-pink-400 hover:bg-pink-500 text-white rounded-md">
-                          Book Now
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-colors"
+                    >
+                      <button className="text-lg text-white">
+                        {moment(classItem.date).format("DD/MMM").toUpperCase()}
+                      </button>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
             </motion.div>
