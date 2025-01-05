@@ -39,32 +39,32 @@
 //         </div>
 
 //         {/* Hip Hop Card */}
-        // <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
-        //   <div className="h-48 bg-gradient-to-br from-blue-100 to-indigo-100 flex flex-col items-center justify-center p-6 relative overflow-hidden">
-        //     <span className="text-6xl mb-2">🕺</span>
-        //     <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-        //   </div>
-        //   <div className="p-6">
-        //     <div className="flex justify-between items-start mb-4">
-        //       <div>
-        //         <h2 className="text-xl font-bold text-indigo-900">
-        //           Bronx Gala Night
-        //         </h2>
-        //         <p className="text-sm text-indigo-900">Hip Hop Intermediate</p>
-        //       </div>
-        //       <div className="text-2xl font-bold text-indigo-600">$ 3,000</div>
-        //     </div>
-        //     <p className="text-gray-600 text-sm mb-6"> 12 January, 2024 19:00 - 20:30</p>
-        //     <select className="w-full mb-4 p-2 border-2 border-indigo-100 rounded-lg focus:border-indigo-300 focus:ring-0">
-        //       <option>1  Ticket</option>
-        //       <option>2 Tickets</option>
-        //       <option>3  Tickets</option>
-        //     </select>
-        //     <button className="w-full bg-indigo-50 text-indigo-900 py-3 rounded-lg hover:bg-indigo-100 transition-colors duration-300 font-medium">
-        //        Book Now
-        //     </button>
-        //   </div>
-        // </div>
+// <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+//   <div className="h-48 bg-gradient-to-br from-blue-100 to-indigo-100 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+//     <span className="text-6xl mb-2">🕺</span>
+//     <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+//   </div>
+//   <div className="p-6">
+//     <div className="flex justify-between items-start mb-4">
+//       <div>
+//         <h2 className="text-xl font-bold text-indigo-900">
+//           Bronx Gala Night
+//         </h2>
+//         <p className="text-sm text-indigo-900">Hip Hop Intermediate</p>
+//       </div>
+//       <div className="text-2xl font-bold text-indigo-600">$ 3,000</div>
+//     </div>
+//     <p className="text-gray-600 text-sm mb-6"> 12 January, 2024 19:00 - 20:30</p>
+//     <select className="w-full mb-4 p-2 border-2 border-indigo-100 rounded-lg focus:border-indigo-300 focus:ring-0">
+//       <option>1  Ticket</option>
+//       <option>2 Tickets</option>
+//       <option>3  Tickets</option>
+//     </select>
+//     <button className="w-full bg-indigo-50 text-indigo-900 py-3 rounded-lg hover:bg-indigo-100 transition-colors duration-300 font-medium">
+//        Book Now
+//     </button>
+//   </div>
+// </div>
 
 //         {/* Ballet Card */}
 //         <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
@@ -96,8 +96,7 @@
 //   );
 // }
 
-
-//final 
+//final
 
 // import { motion } from 'framer-motion'
 
@@ -111,9 +110,7 @@
 //             <a href="/" className="text-white text-2xl font-serif">
 //               Priya Jayanthi
 //             </a>
-            
-           
-            
+
 //             <div className="flex items-center space-x-6">
 //               <button className="bg-pink-400 text-white px-6 py-2 rounded-full hover:bg-pink-500 transition-colors">
 //                 BUY TICKETS
@@ -125,7 +122,7 @@
 
 //       {/* Hero Section */}
 //       <section className="relative min-h-screen pt-20">
-//         <motion.div 
+//         <motion.div
 //           initial={{ opacity: 0 }}
 //           animate={{ opacity: 1 }}
 //           transition={{ duration: 1 }}
@@ -138,7 +135,7 @@
 //               className="w-full h-full object-cover"
 //             />
 //             <div className="absolute inset-0 bg-gradient-to-t from-[#1a1b2e]/80 to-transparent" />
-//             <motion.h1 
+//             <motion.h1
 //               initial={{ y: 20, opacity: 0 }}
 //               animate={{ y: 0, opacity: 1 }}
 //               transition={{ delay: 0.5 }}
@@ -150,7 +147,7 @@
 //         </motion.div>
 
 //         {/* Decorative Lines */}
-//         <motion.div 
+//         <motion.div
 //           initial={{ opacity: 0 }}
 //           animate={{ opacity: 1 }}
 //           transition={{ delay: 1 }}
@@ -170,7 +167,7 @@
 //       {/* Upcoming Classes Section */}
 //       <section className="py-20">
 //         <div className="container mx-auto px-4">
-//           <motion.h2 
+//           <motion.h2
 //             initial={{ opacity: 0, y: 20 }}
 //             whileInView={{ opacity: 1, y: 0 }}
 //             transition={{ duration: 0.8 }}
@@ -179,7 +176,7 @@
 //           >
 //             UPCOMING CLASSES
 //           </motion.h2>
-          
+
 //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 //             {[1, 2, 3].map((item) => (
 //               <motion.div
@@ -233,8 +230,7 @@
 
 // export default DanceTickets
 
-
- //beautiful Girl 
+//beautiful Girl
 
 // import { motion } from 'framer-motion';
 
@@ -371,12 +367,15 @@
 
 // export default DanceTickets;
 
+"use client";
 
-"use client"
-
-import { motion } from "framer-motion"
-import { MailingList } from "./mailing-list"
-import { ClassSections } from "./class-sections"
+import { Instagram, Youtube } from "lucide-react";
+import { useState } from "react";
+import { Button } from "./button";
+import { ClassSections } from "./class-sections";
+import Hero from "./Hero";
+import { MailingList } from "./mailing-list";
+import Modal from "./shared/dialog";
 
 export default function DanceTickets() {
   return (
@@ -388,44 +387,14 @@ export default function DanceTickets() {
             <a href="/" className="text-white text-2xl font-serif">
               Priya Jayanthi
             </a>
-            <div className="flex items-center space-x-6">
-              <button className="bg-pink-400 text-white px-6 py-2 rounded-full hover:bg-pink-500 transition-colors">
-                BUY TICKETS
-              </button>
-            </div>
+            <NavbarButtons />
+            <div></div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen pt-20">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="container mx-auto px-4 py-20"
-        >
-          <div className="relative rounded-[2rem] overflow-hidden aspect-video max-w-6xl mx-auto">
-            <img
-              src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3"
-              alt="Dance Performance"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1b2e]/80 to-transparent" />
-            <motion.h1
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="absolute bottom-10 left-1/2 -translate-x-1/2 text-4xl md:text-6xl text-white font-serif text-center"
-            >
-              DANCE WITH US
-            </motion.h1>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Mailing List Section */}
-      <MailingList />
+      <Hero />
 
       {/* Class Sections */}
       <ClassSections />
@@ -434,18 +403,32 @@ export default function DanceTickets() {
       <footer className="py-12 border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-white/60 mb-4 md:mb-0">© 2024 Dance Studio. All rights reserved.</p>
+            <p className="text-white/60 mb-4 md:mb-0">
+              © 2024 Dance Studio. All rights reserved.
+            </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-white/60 hover:text-pink-300 transition-colors">
+              <a
+                href="#"
+                className="text-white/60 hover:text-pink-300 transition-colors"
+              >
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="text-white/60 hover:text-pink-300 transition-colors">
+              <a
+                href="#"
+                className="text-white/60 hover:text-pink-300 transition-colors"
+              >
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="text-white/60 hover:text-pink-300 transition-colors">
+              <a
+                href="#"
+                className="text-white/60 hover:text-pink-300 transition-colors"
+              >
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" className="text-white/60 hover:text-pink-300 transition-colors">
+              <a
+                href="#"
+                className="text-white/60 hover:text-pink-300 transition-colors"
+              >
                 <i className="fab fa-youtube"></i>
               </a>
             </div>
@@ -453,6 +436,42 @@ export default function DanceTickets() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
+const NavbarButtons = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <div className="flex items-center gap-x-2">
+        <div className="flex items-center space-x-6">
+          <button
+            title="Youtube"
+            className="bg-pink-400/5 text-white px-6 py-2 rounded-full hover:bg-pink-500/10 transition-colors"
+          >
+            <Youtube className="text-red-500" />
+          </button>
+        </div>
+        <div className="flex items-center space-x-6">
+          <button
+            title="Instagram"
+            className="bg-pink-400/5 text-white px-6 py-2 rounded-full hover:bg-pink-500/10 transition-colors"
+          >
+            <Instagram className="text-[#e1306c]" />
+          </button>
+        </div>
+
+        <Button onClick={() => setIsOpen(true)}>Join the Mailing List</Button>
+        <a href="#class">
+          <Button variant="secondary">BUY TICKETS</Button>
+        </a>
+      </div>
+
+      {isOpen && (
+        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+          <MailingList dialogClose={() => setIsOpen(false)} />
+        </Modal>
+      )}
+    </>
+  );
+};

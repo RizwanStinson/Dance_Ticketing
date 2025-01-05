@@ -67,22 +67,29 @@ button:focus-visible {
   }
 } */
 
-
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .font-serif {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
+.swiper-pagination-bullet {
+  background-color: #00bcd4;
+}
+
+/* Change the active bullet color */
+.swiper-pagination-bullet-active {
+  background-color: #00bcd4; /* Replace with your desired active color */
+}
