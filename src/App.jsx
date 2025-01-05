@@ -1,16 +1,3 @@
-// import DanceTickets from "./components/DanceTickets";
-
-// function App() {
-//   return (
-//     <div>
-//       <DanceTickets />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ClassManagement from "./components/ClassManagement";
 import DanceTickets from "./components/DanceTickets";
