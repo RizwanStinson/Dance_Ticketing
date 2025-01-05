@@ -290,7 +290,7 @@ export function ClassSections() {
   return (
     <section className="py-20" id="class">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center gap-12">
+        <div className="flex flex-row md:flex-col items-start md:items-center gap-12">
           {/* Navigation Buttons */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-[800px]">
             {[
