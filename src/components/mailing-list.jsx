@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { useState } from "react";
 
-export function MailingList() {
-  const [isExpanded, setIsExpanded] = useState(false);
+export function MailingList({ dialogClose }) {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -22,6 +21,10 @@ export function MailingList() {
     }
     setError("");
     setIsSubmitted(true);
+
+    setTimeout(() => {
+      dialogClose();
+    }, 3000);
   };
 
   return (
@@ -56,54 +59,45 @@ export function MailingList() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                >
-                  <button
-                    className="px-4 py-2 text-white/60 border border-white/60 hover:bg-pink-400 hover:text-white hover:border-pink-400 transition-all duration-300 rounded-md"
-                    onClick={() => setIsExpanded(!isExpanded)}
-                  >
-                    {isExpanded ? "Hide Form" : "Join the Mailing List"}
-                  </button>
-                </motion.div>
+                ></motion.div>
                 <AnimatePresence>
-                  {isExpanded && (
-                    <motion.form
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      onSubmit={handleSubmit}
-                      className="space-y-4 overflow-hidden"
+                  <motion.form
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    onSubmit={handleSubmit}
+                    className="space-y-4 overflow-hidden"
+                  >
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 }}
+                      className="flex gap-2 max-w-md mx-auto"
                     >
-                      <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.1 }}
-                        className="flex gap-2 max-w-md mx-auto"
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-4 py-2 bg-white/10 text-white placeholder:text-white/60 border border-white/20 focus:outline-none focus:ring-2 focus:ring-pink-400 rounded-md"
+                      />
+                      <button
+                        type="submit"
+                        className="px-4 py-2 bg-pink-400 hover:bg-pink-500 text-white rounded-md"
                       >
-                        <input
-                          type="email"
-                          placeholder="Enter your email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="w-full px-4 py-2 bg-white/10 text-white placeholder:text-white/60 border border-white/20 focus:outline-none focus:ring-2 focus:ring-pink-400 rounded-md"
-                        />
-                        <button
-                          type="submit"
-                          className="px-4 py-2 bg-pink-400 hover:bg-pink-500 text-white rounded-md"
-                        >
-                          Join
-                        </button>
-                      </motion.div>
-                      {error && (
-                        <motion.p
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="text-red-400 text-sm"
-                        >
-                          {error}
-                        </motion.p>
-                      )}
-                    </motion.form>
-                  )}
+                        Join
+                      </button>
+                    </motion.div>
+                    {error && (
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-red-400 text-sm"
+                      >
+                        {error}
+                      </motion.p>
+                    )}
+                  </motion.form>
                 </AnimatePresence>
               </>
             ) : (
