@@ -4,6 +4,12 @@ export function Button({
   variant = "primary",
   ...props
 }) {
+  Button.propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    variant: PropTypes.oneOf(["primary", "secondary"]),
+  };
+
   return (
     <button
       className={`
@@ -21,7 +27,7 @@ export function Button({
   border-2 border-transparent hover:border-blue-400/50
   hover:scale-[1.02] active:scale-[0.98]
 `
-: `
+            : `
   bg-blue-100 hover:bg-blue-200  
   text-blue-900
   shadow-md shadow-blue-100/20 hover:shadow-blue-200/30
@@ -37,3 +43,5 @@ export function Button({
     </button>
   );
 }
+
+import PropTypes from 'prop-types';

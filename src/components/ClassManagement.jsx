@@ -25,7 +25,7 @@
 // export default ClassManagement;
 
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddClassForm from './AddClassForm';
 import ExistingClasses from './ExistingClasses';

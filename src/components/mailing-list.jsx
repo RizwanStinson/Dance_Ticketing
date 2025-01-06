@@ -79,11 +79,11 @@ export function MailingList({ dialogClose }) {
                         placeholder="Enter your email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-2 bg-white/10 text-white placeholder:text-white/60 border border-white/20 focus:outline-none focus:ring-2 focus:ring-pink-400 rounded-md"
+                        className="w-full px-4 py-2 bg-white/10 text-white placeholder:text-white/60 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-md"
                       />
                       <button
                         type="submit"
-                        className="px-4 py-2 bg-pink-400 hover:bg-pink-500 text-white rounded-md"
+                        className="px-4 py-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md"
                       >
                         Join
                       </button>
