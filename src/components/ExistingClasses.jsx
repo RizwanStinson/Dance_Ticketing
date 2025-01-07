@@ -1,4 +1,3 @@
-import React from 'react';
 
 // Hardcoded data for existing classes
 const existingClasses = {
