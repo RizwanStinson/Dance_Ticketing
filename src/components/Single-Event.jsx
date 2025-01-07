@@ -1,4 +1,4 @@
-import { Instagram, Minus, Plus, Youtube } from "lucide-react";
+import { Instagram, Youtube } from "lucide-react";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getEventsById } from "../lib/events";
@@ -7,15 +7,21 @@ import { MailingList } from "./mailing-list";
 import Modal from "./shared/dialog";
 
 const SingleEvent = () => {
-  const [quantity, setQuantity] = React.useState(1);
+  // const [quantity, setQuantity] = React.useState(1);
+  const [isOpen, setIsOpen] = React.useState(false);
+
+
   const { id } = useParams();
 
+
   const params = id.split("-");
+
+  console.log(params)
 
   const result = getEventsById(params[0], params[1]);
 
   return (
-    <div className="bg-[#1a1b2e] min-h-screen py-20">
+    <div className="bg-[#0a192f] min-h-screen py-40">
       <nav className="fixed top-0 w-full z-50 bg-[#0a192f]/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between flex-wrap">
@@ -31,7 +37,7 @@ const SingleEvent = () => {
             <div className="flex justify-center items-center space-x-2 sm:space-x-4 md:space-x-6">
               <NavbarButtons />
             </div>
-            <div className='w-full lg:w-auto mt-2 md:mt-0'>
+            <div className='hidden md:block w-full lg:w-auto mt-2 md:mt-0'>
               <EndButton />
             </div>
           </div>
@@ -53,30 +59,66 @@ const SingleEvent = () => {
             </div>
 
             <div>
-              <div className="flex items-center gap-2 bg-pink-400/20 rounded-lg p-2 w-fit">
-                <button
+              {/* <div className="flex items-center gap-2 bg-pink-400/20 rounded-lg p-2 w-fit"> */}
+                {/* <button
                   className="h-8 w-8 flex items-center justify-center rounded-full text-pink-400 hover:text-pink-300 hover:bg-pink-400/30"
                   onClick={() => setQuantity((prev) => prev - 1)}
                   disabled={quantity === 1}
                 >
                   <Minus className="h-4 w-4" />
-                </button>
-                <span className="text-white font-medium min-w-[2rem] text-center">
+                </button> */}
+                {/* <span className="text-white font-medium min-w-[2rem] text-center">
                   {quantity}
-                </span>
-                <button
+                </span> */}
+                {/* <button
                   className="h-8 w-8 flex items-center justify-center rounded-full text-pink-400 hover:text-pink-300 hover:bg-pink-400/30"
                   onClick={() => setQuantity((prev) => prev + 1)}
                   disabled={quantity === 20}
                 >
                   <Plus className="h-4 w-4" />
-                </button>
-              </div>
+                </button> */}
+              {/* </div> */}
             </div>
-            <div className="flex gap-x-4">
+            <Button 
+  onClick={() => setIsOpen(true)}
+  className="bg-gradient-to-r from-[#64ffda] to-[#31bdcf] text-[#0a192f] hover:shadow-lg hover:scale-105 transform transition-all duration-300 h-[50px] md:h-[60px] rounded-full px-6 text-base sm:text-lg"
+>
+  Buy Now
+</Button>
+{isOpen && (
+  <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+    <div className="space-y-4 p-4">
+      <input 
+        type="text" 
+        placeholder="Name" 
+        className="w-full bg-[#0a192f] text-[#64ffda] border border-[#64ffda]/50 rounded-lg p-2"
+      />
+      <input 
+        type="email" 
+        placeholder="Email" 
+        className="w-full bg-[#0a192f] text-[#64ffda] border border-[#64ffda]/50 rounded-lg p-2"
+      />
+      <input 
+        type="text" 
+        placeholder="Contact Number" 
+        className="w-full bg-[#0a192f] text-[#64ffda] border border-[#64ffda]/50 rounded-lg p-2"
+      />
+       <div className="flex gap-x-4">
               <Button>Pay With Paypal</Button>
               <Button variant="outline">Pay With Stripe</Button>
             </div>
+      {/* <div className="flex gap-x-4">
+        <Button>Pay With Paypal</Button>
+        <Button variant="outline">Pay With Stripe</Button>
+      </div> */}
+    </div>
+  </Modal>
+)}
+
+            {/* <div className="flex gap-x-4">
+              <Button>Pay With Paypal</Button>
+              <Button variant="outline">Pay With Stripe</Button>
+            </div> */}
           </div>
         </div>
 
@@ -138,7 +180,7 @@ const EndButton = () => {
           onClick={() => setIsOpen(true)}
           className="text-xs sm:text-sm md:text-base bg-[#64ffda] text-[#0a192f] hover:bg-[#64ffda]/80 h-[40px] md:h-[60px]"
         >
-          Join the Mailing List
+          SUBSCRIBE
         </Button>
         <a href="#class">
           <Button 
