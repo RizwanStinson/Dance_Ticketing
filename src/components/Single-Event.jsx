@@ -152,19 +152,22 @@ const NavbarButtons = () => {
   return (
     <>
       <div className="flex items-center gap-x-2 sm:gap-x-4">
+      <a href="https://www.youtube.com/channel/UCdoSqP8S0bonXEjKstt6mlQ" target="_blank" rel="noopener noreferrer">
         <button
           title="Youtube"
           className="bg-[#64ffda]/10 text-[#64ffda] p-2 sm:px-4 sm:py-2 rounded-full hover:bg-[#64ffda]/20 transition-colors h-[40px] md:h-[60px] w-[40px]  md:w-[60px] flex justify-center items-center "
         >
           <Youtube className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
+        </a>
+        <a href="https://www.instagram.com/priyajayanthi23/" target="_blank" rel="noopener noreferrer">
         <button
           title="Instagram"
           className="bg-[#64ffda]/10 text-[#64ffda] p-2 sm:px-4 sm:py-2 rounded-full hover:bg-[#64ffda]/20 transition-colors h-[40px] md:h-[60px] w-[40px]  md:w-[60px] flex justify-center items-center"
         >
           <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
-        
+        </a>
       </div>
 
       
