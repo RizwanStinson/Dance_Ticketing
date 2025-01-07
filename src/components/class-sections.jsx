@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import moment from "moment";
+import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -96,13 +96,32 @@ export const classData = {
 
 export function ClassSections() {
   const [activeSection, setActiveSection] = useState("nyc");
+  const [ticketQuantities, setTicketQuantities] = useState({});
+
+  const updateTicketQuantity = (id, delta) => {
+    setTicketQuantities((prev) => {
+      const currentQuantity = prev[id] || 1;
+      const newQuantity = Math.max(1, Math.min(10, currentQuantity + delta));
+      return { ...prev, [id]: newQuantity };
+    });
+  };
+
+  const getTicketQuantity = (id) => ticketQuantities[id] || 1;
+
+  const formatPrice = (price) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(price);
 
   return (
     <section className="py-20" id="class">
       <div className="container mx-auto px-4">
-        <div className="flex flex-row md:flex-col items-start md:items-center gap-12">
+        <div className="flex flex-col items-start md:items-center gap-12">
           {/* Navigation Buttons */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-[800px]">
+          <div className="grid grid-cols-3  gap-4 w-full max-w-[800px]">
             {[
               { id: "nyc", label: "NYC/NJ Group" },
               { id: "private", label: "Private" },
@@ -110,7 +129,7 @@ export function ClassSections() {
             ].map((section) => (
               <button
                 key={section.id}
-                className={`text-[15px] md:text-lg py-6 border-r-2 md:border-r-0  md:border-b-2 ${
+                className={`text-[15px] md:text-lg py-6  border-b-2 ${
                   activeSection === section.id
                     ? "text-[#64ffda] border-[#64ffda]"
                     : "text-[#64ffda]/60 border-transparent hover:text-[#64ffda]"
@@ -133,21 +152,53 @@ export function ClassSections() {
             >
               <div className="gap-4 flex flex-wrap justify-center">
                 {classData[activeSection].map((classItem, index) => (
-                  <Link
-                    key={classItem.id}
-                    to={`/class/${activeSection}-${classItem.id}`}
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="bg-[#64ffda]/5 rounded-lg p-6 hover:bg-[#64ffda]/10 transition-colors"
-                    >
-                      <button className="text-lg text-[#64ffda]">
-                        {moment(classItem.date).format("DD/MMM").toUpperCase()}
+                  <motion.div
+                  key={classItem.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-colors w-full"
+                >
+                  <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                   {/* edit here  */}
+                    {/* Class Details */}
+                    <div className="text-center md:text-left">
+                      <h3 className="text-white text-lg font-medium">
+                        {classItem.date}
+                      </h3>
+                      <p className="text-white/60">{classItem.time}</p>
+                    </div>
+                    {/* Ticket Quantity Control */}
+                    <div className="flex items-center gap-2 bg-blue-400/20 rounded-lg p-2">
+                      <button
+                        className="h-8 w-8 flex items-center justify-center rounded-full text-blue-500 hover:text-blue-300 hover:bg-blue-400/30"
+                        onClick={() => updateTicketQuantity(classItem.id, -1)}
+                      >
+                        <Minus className="h-4 w-4" />
                       </button>
-                    </motion.div>
-                  </Link>
+                      <span className="text-white font-medium min-w-[2rem] text-center">
+                        {getTicketQuantity(classItem.id)}
+                      </span>
+                      <button
+                        className="h-8 w-8 flex items-center justify-center rounded-full text-blue-400 hover:text-blue-300 hover:bg-blue-400/30"
+                        onClick={() => updateTicketQuantity(classItem.id, 1)}
+                      >
+                        <Plus className="h-4 w-4" />
+                      </button>
+                    </div>
+                    {/* Price and Booking Button */}
+                    <div className="flex flex-col items-end">
+                      <p className="text-blue-400 text-lg font-bold pr-5">
+                        {formatPrice(
+                          classItem.basePrice * getTicketQuantity(classItem.id)
+                        )}
+                      </p>
+                      <Link to={`/class/${activeSection}-${classItem.id}`} className="px-4 py-2 mt-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md">
+                        Book Now
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
                 ))}
               </div>
             </motion.div>
