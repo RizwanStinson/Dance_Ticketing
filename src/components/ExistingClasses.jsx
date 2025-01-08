@@ -26,10 +26,10 @@ function ExistingClasses() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Existing Classes</h2>
+      <h2 className="text-2xl font-bold mb-4 text-black">Existing Classes</h2>
       {Object.entries(existingClasses).map(([classType, classes]) => (
         <div key={classType} className="mb-8">
-          <h3 className="text-xl font-semibold mb-2">{classType}</h3>
+          <h3 className="text-xl font-semibold mb-2 text-black">{classType}</h3>
           <div className="bg-white shadow-md rounded overflow-x-auto">
             <table className="min-w-full">
               <thead>

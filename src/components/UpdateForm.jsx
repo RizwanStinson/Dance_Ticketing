@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-function NewsletterForm() {
+function UpdateForm() {
   const [subject, setSubject] = useState('');
   const [body, setBody] = useState('');
 
@@ -13,8 +13,8 @@ function NewsletterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-8">
-      <h2 className="text-2xl font-bold mb-4 text-black">Send Newsletter</h2>
+    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-8 text-black">
+      <h2 className="text-2xl font-bold mb-4">Send Newsletter</h2>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="subject">
           Subject
@@ -62,5 +62,5 @@ function NewsletterForm() {
   );
 }
 
-export default NewsletterForm;
+export default UpdateForm;
 
