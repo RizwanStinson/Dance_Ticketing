@@ -123,16 +123,16 @@ export function ClassSections() {
           {/* Navigation Buttons */}
           <div className="grid grid-cols-3  gap-4 w-full max-w-[800px]">
             {[
-              { id: "nyc", label: "NYC/NJ Group" },
-              { id: "private", label: "Private" },
-              { id: "online", label: "Online" },
+              { id: 'nyc', label: 'NYC/NJ Group' },
+              { id: 'private', label: 'Private' },
+              { id: 'online', label: 'Online' },
             ].map((section) => (
               <button
                 key={section.id}
                 className={`text-[15px] md:text-lg py-6  border-b-2 ${
                   activeSection === section.id
-                    ? "text-[#64ffda] border-[#64ffda]"
-                    : "text-[#64ffda]/60 border-transparent hover:text-[#64ffda]"
+                    ? 'text-[#64ffda] border-[#64ffda]'
+                    : 'text-[#64ffda]/60 border-transparent hover:text-[#64ffda]'
                 }`}
                 onClick={() => setActiveSection(section.id)}
               >
@@ -153,52 +153,67 @@ export function ClassSections() {
               <div className="gap-4 flex flex-wrap justify-center">
                 {classData[activeSection].map((classItem, index) => (
                   <motion.div
-                  key={classItem.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-colors w-full"
-                >
-                  <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                   {/* edit here  */}
-                    {/* Class Details */}
-                    <div className="text-center md:text-left">
-                      <h3 className="text-white text-lg font-medium">
-                        {classItem.date}
-                      </h3>
-                      <p className="text-white/60">{classItem.time}</p>
-                    </div>
-                    {/* Ticket Quantity Control */}
-                    <div className="flex items-center gap-2 bg-blue-400/20 rounded-lg p-2">
-                      <button
-                        className="h-8 w-8 flex items-center justify-center rounded-full text-blue-500 hover:text-blue-300 hover:bg-blue-400/30"
-                        onClick={() => updateTicketQuantity(classItem.id, -1)}
-                      >
-                        <Minus className="h-4 w-4" />
-                      </button>
-                      <span className="text-white font-medium min-w-[2rem] text-center">
-                        {getTicketQuantity(classItem.id)}
-                      </span>
-                      <button
-                        className="h-8 w-8 flex items-center justify-center rounded-full text-blue-400 hover:text-blue-300 hover:bg-blue-400/30"
-                        onClick={() => updateTicketQuantity(classItem.id, 1)}
-                      >
-                        <Plus className="h-4 w-4" />
-                      </button>
-                    </div>
-                    {/* Price and Booking Button */}
-                    <div className="flex flex-col items-end">
-                      <p className="text-blue-400 text-lg font-bold pr-5">
-                        {formatPrice(
-                          classItem.basePrice * getTicketQuantity(classItem.id)
-                        )}
-                      </p>
-                      <Link to={`/class/${activeSection}-${classItem.id}`} className="px-4 py-2 mt-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md">
+                    key={classItem.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-white/5 rounded-lg p-6 hover:bg-white/10 transition-colors w-full"
+                  >
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                      {/* edit here  */}
+                      {/* Class Details */}
+                      <div className="text-center md:text-left">
+                        <h3 className="text-white text-lg font-medium">
+                          {classItem.date}
+                        </h3>
+                        <p className="text-white/60">{classItem.time}</p>
+                      </div>
+                      {/* Ticket Quantity Control */}
+                      <div className="flex items-center gap-2 bg-blue-400/20 rounded-lg p-2">
+                        <button
+                          className="h-8 w-8 flex items-center justify-center rounded-full text-blue-500 hover:text-blue-300 hover:bg-blue-400/30"
+                          onClick={() => updateTicketQuantity(classItem.id, -1)}
+                        >
+                          <Minus className="h-4 w-4" />
+                        </button>
+                        <span className="text-white font-medium min-w-[2rem] text-center">
+                          {getTicketQuantity(classItem.id)}
+                        </span>
+                        <button
+                          className="h-8 w-8 flex items-center justify-center rounded-full text-blue-400 hover:text-blue-300 hover:bg-blue-400/30"
+                          onClick={() => updateTicketQuantity(classItem.id, 1)}
+                        >
+                          <Plus className="h-4 w-4" />
+                        </button>
+                      </div>
+                      {/* Price and Booking Button */}
+                      <div className="flex flex-col items-end">
+                        <p className="text-blue-400 text-lg font-bold pr-5">
+                          {formatPrice(
+                            classItem.basePrice *
+                              getTicketQuantity(classItem.id)
+                          )}
+                        </p>
+                        {/* <Link to={`/class/${activeSection}-${classItem.id}`} className="px-4 py-2 mt-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md">
                         Book Now
-                      </Link>
+                      </Link> */}
+                        <Link
+                          to={{
+                            pathname: `/class/${activeSection}-${classItem.id}`,
+                            state: {
+                              amount:
+                                classItem.basePrice *
+                                getTicketQuantity(classItem.id), // Pass the updated total price
+                              quantity: getTicketQuantity(classItem.id), // Pass selected quantity
+                            },
+                          }}
+                          className="px-4 py-2 mt-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md"
+                        >
+                          Book Now
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -206,6 +221,6 @@ export function ClassSections() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
