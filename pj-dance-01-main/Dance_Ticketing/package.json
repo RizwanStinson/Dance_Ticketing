@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node api.js && vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite",
-    "start": "vite preview --host 0.0.0.0 --port $PORT"
+    "start": "node api.js && vite preview --host 0.0.0.0 --port $PORT"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.4",
