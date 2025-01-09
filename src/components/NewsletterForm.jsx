@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import axios from 'axios';
 
 function NewsletterForm() {
   const [subject, setSubject] = useState('');
   const [body, setBody] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle newsletter submission logic here
-    console.log('Sending newsletter:', { subject, body });
+    const newsletterData = {
+      sub: subject,
+      body: body,
+    };
+    const token = localStorage.getItem('authToken');
+  const headers = token ? { Authorization: `Bearer ${token}` } : {};
+    console.log('Sending newsletter:', newsletterData);
+    const response = await axios.post('http://184.72.200.110:3000/api/v1/newsletters/send', newsletterData, {headers});
+    console.log('Newsletter sent:', response.data);
   };
 
   return (
@@ -37,6 +45,7 @@ function NewsletterForm() {
           value={body}
           onChange={setBody}
           className="bg-white"
+          style={{ color: 'black' }}
           modules={{
             toolbar: [
               [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
