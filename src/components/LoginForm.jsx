@@ -1,13 +1,33 @@
+
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import loginService from '../services/loginService';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+    setError('');
     console.log('Login attempted with:', email, password);
+    const response = await loginService.login(email, password);
+    console.log('Login response:', response);
+    //in response I have token, save the token in local storage 
+    if(response.messgae == "login successful"){
+      localStorage.setItem('authToken', response.token);
+      navigate('/manage');
+    }
+    else navigate('/admin');
+  //   try {
+  //     const response = await login(email, password); // Call the login service
+  //     console.log('Login successful:', response);
+  //     navigate('/manage'); // Redirect to /manage
+  //   } catch (err) {
+  //     setError(err.response?.data?.message || 'Login failed. Please try again.');
+  //   }
   };
 
   return (
@@ -58,4 +78,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-
