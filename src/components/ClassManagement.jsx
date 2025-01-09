@@ -39,7 +39,7 @@ function ClassManagement() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Implement logout logic here
+    localStorage.removeItem('authToken');
     console.log('Logging out');
     navigate('/admin');
   };
