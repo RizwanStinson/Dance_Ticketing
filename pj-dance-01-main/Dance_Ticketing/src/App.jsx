@@ -3,6 +3,8 @@ import ClassManagement from "./components/ClassManagement";
 import DanceTickets from "./components/DanceTickets";
 import LoginForm from "./components/LoginForm";
 import SingleEvent from "./components/Single-Event";
+import PaymentSuccessPage from "./pages/PaymentSuccessPage";
+import CancelPage from "./pages/PaymentCancelPage";
 
 function App() {
   return (
@@ -13,10 +15,12 @@ function App() {
           <Route path="/admin" element={<LoginForm />} />
           <Route path="/class/:id" element={<SingleEvent />} />
           <Route path="/manage" element={<ClassManagement />} />
+          <Route path="/success" element={<PaymentSuccessPage />} />
+          <Route path="/cancel" element={<CancelPage />} />
         </Routes>
       </div>
     </Router>
-  );
+  )
 }
 
 export default App;

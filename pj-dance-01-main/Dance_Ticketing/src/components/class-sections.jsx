@@ -108,6 +108,8 @@ export function ClassSections() {
 
   const getTicketQuantity = (id) => ticketQuantities[id] || 1;
 
+
+
   const formatPrice = (price) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -198,14 +200,12 @@ export function ClassSections() {
                         Book Now
                       </Link> */}
                         <Link
-                          to={{
-                            pathname: `/class/${activeSection}-${classItem.id}`,
-                            state: {
-                              amount:
-                                classItem.basePrice *
-                                getTicketQuantity(classItem.id), // Pass the updated total price
-                              quantity: getTicketQuantity(classItem.id), // Pass selected quantity
-                            },
+                          to={`/class/${activeSection}-${classItem.id}`}
+                          state={{
+                            amount:
+                              classItem.basePrice *
+                              getTicketQuantity(classItem.id),
+                            quantity: getTicketQuantity(classItem.id),
                           }}
                           className="px-4 py-2 mt-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md"
                         >
