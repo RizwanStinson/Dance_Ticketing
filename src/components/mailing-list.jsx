@@ -146,7 +146,7 @@ export function MailingList({ dialogClose }) {
 
     try {
       // Send POST request using axios
-      await axios.post("http://184.72.200.110:3000/api/v1/newsletters/join", {
+      await axios.post("http://localhost:8000/api/v1/newsletters/join", {
         email: email,
       });
 
