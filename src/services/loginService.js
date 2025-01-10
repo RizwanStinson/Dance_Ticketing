@@ -1,9 +1,7 @@
 import axios from 'axios';
-// import dotenv from 'dotenv';
-// dotenv.config();
 
 const login = async (email, password) => {
-//   const baseUrl = import.meta.env.VITE_BASE_URL;
+  
   console.log("From Service", email, password)
 
   try {
