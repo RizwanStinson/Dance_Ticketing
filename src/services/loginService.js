@@ -7,7 +7,7 @@ const login = async (email, password) => {
   console.log("From Service", email, password)
 
   try {
-    const response = await axios.post(`http://184.72.200.110:3000/auth/login`, {
+    const response = await axios.post(`http://localhost:8000/api/v1/users/login`, {
       email,
       password,
     });

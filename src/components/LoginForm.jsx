@@ -1,35 +1,37 @@
-
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import loginService from '../services/loginService';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('Please provide correct email and password');
+  const [show, setShow] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
     console.log('Login attempted with:', email, password);
-    const response = await loginService.login(email, password);
-    console.log('Login response:', response);
-    //in response I have token, save the token in local storage 
-    if(response.messgae == "login successful"){
-      localStorage.setItem('authToken', response.token);
-      navigate('/manage');
+  
+    try {
+      const response = await loginService.login(email, password);
+      console.log('Login response:', response);
+  
+      if (response.message === "login suucessful") {
+        localStorage.setItem('authToken', response.token);
+        navigate('/manage');
+      } else {
+        setErrorMessage('Please provide correct email and password');
+        setShow(true);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      setErrorMessage('Please provide correct email and password');
+      setShow(true);
     }
-    else navigate('/admin');
-  //   try {
-  //     const response = await login(email, password); // Call the login service
-  //     console.log('Login successful:', response);
-  //     navigate('/manage'); // Redirect to /manage
-  //   } catch (err) {
-  //     setError(err.response?.data?.message || 'Login failed. Please try again.');
-  //   }
   };
-
+  
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md">
@@ -42,7 +44,6 @@ function LoginForm() {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
-              type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -71,6 +72,9 @@ function LoginForm() {
               Login
             </button>
           </div>
+          {show && (
+  <p className="text-red-500 text-center mt-4">{errorMessage}</p>
+)}
         </form>
       </div>
     </div>
