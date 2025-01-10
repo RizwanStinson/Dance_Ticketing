@@ -148,7 +148,7 @@ export default function DanceTickets() {
 
       {/* Class Sections */}
 
-      <ClassSections />
+      <ClassSections id="class" />
 
       {/* Footer */}
       <footer className="py-12 border-t border-[#64ffda]/10">
@@ -280,12 +280,23 @@ const EndButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
 <div className=' w-full  flex justify-center gap-x-3 pt-8'>
-<Button 
-            
+{/* <Button 
+            onClick={() => document.getElementById("class-sections").scrollIntoView({ behavior: "smooth" })}
             className="text-xs sm:text-sm md:text-base bg-gradient-to-r from-[#64ffda] to-[#64ffda] text-[#0a192f] hover:shadow-lg hover:scale-105 transform transition-all duration-300 h-[50px] md:h-[60px] rounded-full px-6"
           >
             BUY TICKETS
-          </Button>
+          </Button> */}
+    <Button 
+      onClick={() => {
+        const classSection = document.getElementById('class');
+        if (classSection) {
+          classSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }}
+      className="text-xs sm:text-sm md:text-base bg-gradient-to-r from-[#64ffda] to-[#64ffda] text-[#0a192f] hover:shadow-lg hover:scale-105 transform transition-all duration-300 h-[50px] md:h-[60px] rounded-full px-6"
+    >
+      BUY TICKETS
+    </Button>
 
         <a href="#class">
       
