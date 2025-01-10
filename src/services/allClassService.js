@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:8000';
 
 
-const postClass = async () => {
+const allClassService = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/api/v1/dance-classes`);
     return response.data;
@@ -16,4 +16,4 @@ const postClass = async () => {
   }
 };
 
-export default postClass;
+export default allClassService;

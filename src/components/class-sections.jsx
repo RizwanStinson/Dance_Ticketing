@@ -224,6 +224,7 @@
 //   )
 // }
 
+//final 
 
 "use client";
 
@@ -231,6 +232,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 
 export const classData = {
   nyc: [
@@ -324,6 +326,7 @@ export const classData = {
 export function ClassSections() {
   const [activeSection, setActiveSection] = useState("nyc");
   const [ticketQuantities, setTicketQuantities] = useState({});
+  
 
   const updateTicketQuantity = (id, delta) => {
     setTicketQuantities((prev) => {
@@ -450,5 +453,3 @@ export function ClassSections() {
     </section>
   )
 }
-
-
