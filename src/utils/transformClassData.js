@@ -16,9 +16,9 @@ function formatDate(dateString) {
       online: []
     };
   
-    apiData.forEach((item, index) => {
+    apiData.forEach((item) => {
       const transformedItem = {
-        id: index + 1,
+        id:item._id,
         date: formatDate(item.classDate),
         time: item.classType.toLowerCase() === 'private' ? 'By appointment' : formatTime(item.timeFrom, item.timeTo),
         basePrice: item.ticketPrice,
